@@ -4,7 +4,7 @@
 <van-field  label="手机号"></van-field>
 <van-field  label="验证码"></van-field>
 <div class="too">
-  <van-button round type="info" block>酷酷的恒</van-button>
+  <van-button round type="info" block>点击登录</van-button>
 </div>
 </div>
 </template>
