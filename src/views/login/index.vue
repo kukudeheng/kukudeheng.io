@@ -80,7 +80,8 @@ export default {
             this.$store.commit('setToken',res.data.data)
             this.$toast.success('登录成功')
             // 跳转到首页
-            this.$router.push('/')
+            // 有回跳地址就跳转到跳转地址，没有就跳转到首页
+            this.$router.push(this.$route.query.back || '/')
           } catch (error) {
             // this.$toast.fail(error.response.data.message);
             console.log(error)

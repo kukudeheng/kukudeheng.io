@@ -8,3 +8,12 @@ export const userprofile=()=>{
         // }
     })
 }
+// 定义用户修改的api
+// 编辑用户信息
+export const userprofilePatch=data=>{
+    return  request ({
+        url:'/v1_0/user/profile',
+       method:'patch',
+       data
+    })
+}

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { NavBar } from 'vant'
 
 import { Button } from 'vant'
-import { Field, Form, Toast, Tabbar, TabbarItem, Icon,Cell, CellGroup } from 'vant'
+import { Field, Form, Toast, Tabbar, TabbarItem, Icon,Cell, CellGroup,Popup } from 'vant'
 
 Vue.use(Field)
 
@@ -16,3 +16,4 @@ Vue.use(TabbarItem)
 Vue.use(Icon)
 Vue.use(Cell)
 Vue.use(CellGroup)
+Vue.use(Popup)

@@ -1,14 +1,10 @@
 <template>
   <div class="mine">
     <div class="top">
-      <img
-        class="avatar"
-        :src="useinfo.photo"
-        alt=""
-      />
+      <img class="avatar" :src="useinfo.photo" alt="" />
       <div class="use-info">
-        <div class="heima">{{useinfo.name}}</div>
-        <div class="riqi">{{useinfo.birthday}}</div>
+        <div class="heima">{{ useinfo.name }}</div>
+        <div class="riqi">{{ useinfo.birthday }}</div>
       </div>
     </div>
     <div class="middon">
@@ -27,16 +23,27 @@
     </div>
     <div class="bottom">
       <van-cell-group>
-        <van-cell title="编辑资料" is-link icon="edit"></van-cell>
+        <van-cell
+          title="编辑资料"
+          is-link
+          icon="edit"
+          to="/mine/enit"
+        ></van-cell>
         <van-cell title="小智同学" is-link icon="chat-o"></van-cell>
         <van-cell title="系统设置" is-link icon="setting-o"></van-cell>
-        <van-cell title="退出登录" is-link icon="warning-o" @click='exit'></van-cell>
+        <van-cell
+          title="退出登录"
+          is-link
+          icon="warning-o"
+          @click="exit"
+        ></van-cell>
       </van-cell-group>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { userprofile } from '../../api/mine'
 export default {
   data () {
@@ -44,20 +51,23 @@ export default {
       useinfo: ''
     }
   },
-  created(){
+  created () {
     this.getData()
   },
   methods: {
     async getData () {
       const res = await userprofile()
       this.useinfo = res.data.data
-      console.log('用户信息', res)
+      // console.log('用户信息', res)
     },
     // 退出点击
-     exit(){
+    exit () {
       this.$store.commit('logout')
-     }
-  }
+    }
+  },
+   computed: {
+      ...mapState(['userinfo'])
+    },
 }
 </script>
 
