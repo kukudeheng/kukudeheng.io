@@ -2,7 +2,27 @@ import Vue from 'vue'
 import { NavBar } from 'vant'
 
 import { Button } from 'vant'
-import { Field, Form, Toast, Tabbar, TabbarItem, Icon,Cell, CellGroup,Popup } from 'vant'
+import {
+  Field,
+  Form,
+  Toast,
+  Tabbar,
+  TabbarItem,
+  Icon,
+  Cell,
+  CellGroup,
+  Popup,
+  Dialog,
+  DatetimePicker,
+  Uploader,
+  Tab,
+  Tabs,
+  List,
+  PullRefresh,
+  ActionSheet,
+  Grid,
+  GridItem
+} from 'vant'
 
 Vue.use(Field)
 
@@ -17,3 +37,13 @@ Vue.use(Icon)
 Vue.use(Cell)
 Vue.use(CellGroup)
 Vue.use(Popup)
+Vue.use(Dialog)
+Vue.use(DatetimePicker)
+Vue.use(Uploader)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(List)
+Vue.use(PullRefresh)
+Vue.use(ActionSheet)
+Vue.use(Grid)
+Vue.use(GridItem)

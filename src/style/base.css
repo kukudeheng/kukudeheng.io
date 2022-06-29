@@ -12,3 +12,6 @@
 .van-nav-bar__content .van-icon {
   color: white !important;
 }
+.van-nav-bar__content .van-nav-bar__text {
+  color: white !important;
+}

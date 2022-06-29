@@ -34,6 +34,8 @@ export default new Vuex.Store({
     async getuserinfo (store) {
       if (!store.state.userinfo.id) {
         const res = await userprofile()
+        // 如果是公共数据要调整转换，尽量在源头上就行更改，（userinfo.gender2），这里先用过滤器，熟悉一下语法
+        // res.data.data.gender2=res.data.data.gender===0?"男":"女"
         store.commit('setuserinfo', res.data.data)
         // console.log(3);
       }

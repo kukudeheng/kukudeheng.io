@@ -16,7 +16,10 @@ const routes = [
     children: [
       {
         path: 'home',
-        component: () => import('../views/home/index.vue')
+        component: () => import('../views/home/index.vue'),
+        meta: {
+          keep: true
+        }
       },
       {
         path: 'question',
@@ -40,6 +43,14 @@ const routes = [
           noTob: true
         },
         component: () => import('../views/mine/enit.vue')
+      },
+      {
+        path: '@/views/article/:id',
+        meta: {
+          // 不需要显示tab
+          noTob: true
+        },
+        component: () => import('../views/article/index.vue')
       }
     ]
   },
