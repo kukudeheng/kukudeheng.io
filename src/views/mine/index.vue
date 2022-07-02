@@ -29,7 +29,7 @@
           icon="edit"
           to="/mine/enit"
         ></van-cell>
-        <van-cell title="小智同学" is-link icon="chat-o"></van-cell>
+        <van-cell title="小智同学" is-link icon="chat-o" to="/chat"></van-cell>
         <van-cell title="系统设置" is-link icon="setting-o"></van-cell>
         <van-cell
           title="退出登录"

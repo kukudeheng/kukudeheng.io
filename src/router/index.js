@@ -10,6 +10,18 @@ const routes = [
     component: () => import('../views/login/index.vue')
   },
   {
+    path: '/seach',
+    component: () => import('../views/seach/index.vue')
+  },
+  {
+    path: '/reuelt/:key',
+    component: () => import('../views/seach/reuelt.vue')
+  },
+  {
+    path: '/chat',
+    component: () => import('../views/chat/index.vue')
+  },
+  {
     path: '/layout',
     component: () => import('../views/layout/index.vue'),
     redirect: '/layout/home',

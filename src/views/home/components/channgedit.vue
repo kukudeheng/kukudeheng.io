@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-action-sheet title="频道管理" v-model="sheet">
+    <van-action-sheet title="频道管理" v-model="sheet" @closed="isEdit = false">
       <div class="content">
         <div class="top">
           <span class="pindao">我的频道</span>
@@ -54,7 +54,7 @@ export default {
     return {
       sheet: false,
       alllist: [],
-      isEdit: false,
+      isEdit: false
     }
   },
   props: {
@@ -76,7 +76,7 @@ export default {
     async getData () {
       const res = await Channels()
       this.alllist = res.data.data.channels
-      console.log('所有频道列表', res)
+      // console.log('所有频道列表', res)
     },
     // 删除我的频道
     iconclick (index) {
@@ -91,9 +91,7 @@ export default {
       this.$emit('setList', index)
       //   关闭弹窗
       this.sheet = false
-    },
-   
-
+    }
   },
   //   计算属性
   computed: {

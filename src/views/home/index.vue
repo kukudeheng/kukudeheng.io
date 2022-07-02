@@ -9,44 +9,84 @@
         />
       </template>
       <template #right>
-        <van-button icon="search" round style="height:70%">搜索</van-button>
+        <van-button
+          icon="search"
+          round
+          style="height:70%"
+          @click="$router.push('/seach')"
+          >搜索</van-button
+        >
       </template>
     </van-nav-bar>
     <!-- 导航条 -->
     <div class="navigate">
       <van-tabs class="tabs" v-model="currIndex">
-        <van-tab :title="item.name" v-for="item in list" :key="item.id"
+        <van-tab :title="item.name" v-for="(item, index) in list" :key="index"
           ><listhome :id="item.id"></listhome
         ></van-tab>
       </van-tabs>
       <van-icon class="icon" name="wap-nav" @click="showedit"></van-icon>
     </div>
     <!-- 频道管理 -->
-    <channgedit ref="edit" :list="list" @addlist="addlist" :currIndex="currIndex" @delList="delList" @setList='setList'></channgedit>
+    <channgedit
+      ref="edit"
+      :list="list"
+      @addlist="addlist"
+      :currIndex="currIndex"
+      @delList="delList"
+      @setList="setList"
+    ></channgedit>
   </div>
 </template>
 
 <script>
 // 导入api
-import { UserChannels } from '@/api/home.js'
+import { UserChannels, userchannelsPUT } from '@/api/home.js'
 import listhome from '@/views/home/components/listhome.vue'
 import channgedit from '@/views/home/components/channgedit.vue'
+// 导入cookie,作用，接口存储
+import { getcookie, setcookie } from '@/utils/cookie.js'
 
 export default {
   data () {
     return {
       list: [],
-      currIndex:0
+      currIndex: 0
     }
   },
   //   获取用户数据并存储
   created () {
-    this.getData()
+    const _list = getcookie('list')
+    if (_list) {
+      if (this.$store.state.token.token) {
+        this.getData()
+      } else {
+        this.list = JSON.parse(_list)
+      }
+    } else {
+      this.getData()
+    }
   },
   methods: {
+    async savelist () {
+      setcookie('list', JSON.stringify(this.list))
+      // 获取toke
+      if (this.$store.state.token.token) {
+        //  map方法:生成一个新数据，return什么那一项内容就是什么
+        const _list = this.list.map((item, index) => {
+          return {
+            id: item.id,
+            seq: index
+          }
+        })
+        // console.log('_list', _list)
+        await userchannelsPUT({ channels: _list })
+      }
+    },
     async getData () {
       const res = await UserChannels()
       this.list = res.data.data.channels
+      this.savelist()
       // console.log('频道列表', res)
     },
     // 频道管理图标点击
@@ -56,14 +96,16 @@ export default {
     // list新增方法,父传子
     addlist (obj) {
       this.list.push(obj)
+      this.savelist()
     },
     // list删除方法
-    delList(index){
-      this.list.splice(index,1)
+    delList (index) {
+      this.list.splice(index, 1)
     },
     // 修改
-    setList(val){
-     this.currIndex=val
+    setList (val) {
+      this.currIndex = val
+      this.savelist()
     }
   },
   components: {

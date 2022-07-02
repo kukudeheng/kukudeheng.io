@@ -21,7 +21,10 @@ import {
   PullRefresh,
   ActionSheet,
   Grid,
-  GridItem
+  GridItem,
+  Divider,
+  Search,
+  Image
 } from 'vant'
 
 Vue.use(Field)
@@ -47,3 +50,6 @@ Vue.use(PullRefresh)
 Vue.use(ActionSheet)
 Vue.use(Grid)
 Vue.use(GridItem)
+Vue.use(Divider)
+Vue.use(Search)
+Vue.use(Image)

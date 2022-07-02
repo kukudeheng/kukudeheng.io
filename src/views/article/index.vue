@@ -18,19 +18,38 @@
         <van-button type="info" round size="small">+ 关注</van-button>
       </div>
       <div v-html="info.content" class="mian"></div>
+      <van-divider>end</van-divider>
+      <div class="btn">
+        <van-button
+          class="btn-left"
+          plain
+          hairline
+          type="primary"
+          round
+          size="normal"
+          icon="good-job-o"
+          >点赞</van-button
+        >
+        <van-button
+          plain
+          hairline
+          type="danger"
+          round
+          size="normal"
+          icon="delete-o"
+          style="margin-left:25px"
+          >不喜欢</van-button
+        >
+      </div>
     </div>
-    <div class="bottom">
-      <van-field placeholder="请输入评论内容">
-        <template #button>
-          <van-button size="small" type="info">发布</van-button>
-        </template>
-      </van-field>
-    </div>
+
+    <commponent></commponent>
   </div>
 </template>
 
 <script>
 import { articles } from '@/api/article.js'
+import commponent from './commponent/commponent.vue'
 export default {
   name: 'VueXIndex',
 
@@ -39,6 +58,9 @@ export default {
       id: this.$route.params.id,
       info: ''
     }
+  },
+  components: {
+    commponent
   },
 
   mounted () {},
@@ -49,7 +71,7 @@ export default {
     async getData () {
       const res = await articles(this.id)
       this.info = res.data.data
-      console.log('文章详情', res)
+      // console.log('文章详情', res)
     }
   }
 }
@@ -58,8 +80,7 @@ export default {
 <style lang="less" scoped>
 .content {
   width: 100vw;
-  height: 100vh;
-  padding: 20px;
+  padding: 20px 20px 60px 20px;
   box-sizing: border-box;
   .title {
     font-size: 20px;
@@ -79,12 +100,7 @@ export default {
     }
   }
 }
-.bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-}
+
 ::v-deep pre {
   word-break: break-all;
   line-break: anywhere;
@@ -94,9 +110,15 @@ export default {
   display: inline-block;
   overflow-x: auto;
 }
+::v-deep .btn {
+  text-align: center;
+}
 .mian {
   width: 100%;
   overflow: hidden;
-  padding-bottom: 60px;
+  // padding-bottom: 60px;
+}
+::v-deep img {
+  width: 100vw;
 }
 </style>
