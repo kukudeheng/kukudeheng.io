@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue_x"]=self["webpackChunkvue_x"]||[]).push([[620],{21620:function(e,u,n){n.r(u),n.d(u,{default:function(){return a}});var t=function(){var e=this,u=e.$createElement,n=e._self._c||u;return n("div",[e._v("问答")])},l=[],r={},c=r,s=n(1001),f=(0,s.Z)(c,t,l,!1,null,null,null),a=f.exports}}]);
+//# sourceMappingURL=620-legacy.e190a2fa.js.map
